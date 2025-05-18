@@ -387,3 +387,4 @@ local function espGUI()
 		end
 	end)
 end
+task.spawn(espGUI)
