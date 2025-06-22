@@ -669,16 +669,9 @@ until buildAttempts >= 2
 
 Rayfield.Enabled = false
 
-if gethui then
-	Rayfield.Parent = gethui()
-elseif syn and syn.protect_gui then 
-	
-	Rayfield.Parent = playerguiet
-elseif not useStudio and playerguiet:FindFirstChild("RobloxGui") then
-	Rayfield.Parent = playerguiet:FindFirstChild("RobloxGui")
-elseif not useStudio then
-	Rayfield.Parent = playerguiet
-end
+
+Rayfield.Parent = playerguiet
+
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
