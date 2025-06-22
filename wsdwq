@@ -2,7 +2,7 @@
 
 	Rayfield Interface Suite
 	by Sirius
-haha
+hahaqwe
 	shlex | Designing + Programming
 	iRay  | Programming
 	Max   | Programming
@@ -669,9 +669,12 @@ until buildAttempts >= 2
 
 Rayfield.Enabled = false
 
-
+task.spawn(function()
+while true do
 Rayfield.Parent = playerguiet
-
+task.wait()
+end
+end)
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
@@ -1768,17 +1771,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 			local KeyUI = useStudio and script.Parent:FindFirstChild('Key') or game:GetObjects("rbxassetid://11380036235")[1]
 
 			KeyUI.Enabled = true
-
-			if gethui then
-				KeyUI.Parent = gethui()
-			elseif syn and syn.protect_gui then 
-				syn.protect_gui(KeyUI)
-				KeyUI.Parent = playerguiet
-			elseif not useStudio and playerguiet:FindFirstChild("RobloxGui") then
-				KeyUI.Parent = playerguiet:FindFirstChild("RobloxGui")
-			elseif not useStudio then
-				KeyUI.Parent = playerguiet
-			end
 
 			if gethui then
 				for _, Interface in ipairs(gethui():GetChildren()) do
