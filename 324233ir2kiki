@@ -1948,7 +1948,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		local TabButton = TopBarList.Template:Clone()
 		TabButton.Name = Name
 		TabButton.Title.Text = Name
-		TabButton.Parent = TabList
+		TabButton.Parent = TopBarList
 		TabButton.Title.TextWrapped = false
 		TabButton.Visible = true
 	end
