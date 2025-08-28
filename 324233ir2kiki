@@ -3965,7 +3965,7 @@ end)
 
 local thesuperuithingy = Main:FindFirstChild("UIGradient")
 task.spawn(function()
-	while true do
+	while task.wait() do
 		thesuperuithingy.Rotation = thesuperuithingy.Rotation + 0.75
 	end
 end)
