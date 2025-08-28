@@ -640,28 +640,8 @@ local playerguiet = game.Players.LocalPlayer.PlayerGui
 
 -- Interface Management
 
-local InsertService = game:GetService("InsertService")
-
-local Rayfield
-
-if useStudio then
-    -- use the local copy in Studio
-    Rayfield = script.Parent:FindFirstChild("Rayfield")
-else
-    -- load from InsertService when running in-game
-    local success, asset = pcall(function()
-        return InsertService:LoadAsset(135154130365348)
-    end)
-    if success and asset then
-        Rayfield = asset:GetChildren()[1]
-    else
-        warn("Failed to insert Rayfield:", asset)
-    end
-end
-
-if Rayfield then
-    Rayfield.Parent = workspace
-endlocal buildAttempts = 0
+local Rayfield = useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
+local buildAttempts = 0
 local correctBuild = false
 local warned
 local globalLoaded
@@ -681,7 +661,7 @@ repeat
 		warned = true
 	end
 
-	toDestroy, Rayfield = Rayfield, useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://135154130365348")[1]
+	toDestroy, Rayfield = Rayfield, useStudio and script.Parent:FindFirstChild('Rayfield') or game:GetObjects("rbxassetid://10804731440")[1]
 	if toDestroy and not useStudio then toDestroy:Destroy() end
 
 	buildAttempts = buildAttempts + 1
