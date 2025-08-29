@@ -1938,6 +1938,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 	Elements.UIPageLayout.FillDirection = Enum.FillDirection.Horizontal
 	TabList.Template.Visible = false
+	TabList.Size = UDim2.new(0.3, -25, 0.65, 36)
+	
+	Elements.Size = UDim2.new(0.7, 0, 1.011, -100)
 
 	TopBarList.Template.Visible = false
 
