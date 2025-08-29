@@ -1166,8 +1166,6 @@ local function Hide(notify: boolean?)
 		MPrompt.Visible = true
 	end
 
-	task.spawn(closeSearch)
-
 	Debounce = true
 	if notify then
 		if useMobilePrompt then 
@@ -1251,8 +1249,6 @@ Topbar.Divider.BackgroundTransparency = 0
 dragBarCosmetic.BackgroundTransparency = 0.7
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 Topbar.Size = UDim2.new(0, 700, 0, 45)
-
-	task.spawn(openSearch)
 
 	TabList.Visible = true
 
@@ -1401,8 +1397,6 @@ local function Minimise()
 	Topbar.ChangeSize.Image = "rbxassetid://"..11036884234
 
 	Topbar.UIStroke.Color = SelectedTheme.ElementStroke
-
-	task.spawn(closeSearch)
 
 	for _, tabbtn in ipairs(TabList:GetChildren()) do
 		if tabbtn.ClassName == "Frame" and tabbtn.Name ~= "Placeholder" then
