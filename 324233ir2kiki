@@ -1252,6 +1252,8 @@ dragBarCosmetic.BackgroundTransparency = 0.7
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 Topbar.Size = UDim2.new(0, 700, 0, 45)
 
+	task.spawn(openSearch)
+
 	TabList.Visible = true
 
 	Elements.Visible = true
