@@ -1941,7 +1941,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		while task.wait() do
 			TopBarList.Template.Visible = false
 		end
-	end
+	end)
 	-- Tab
 	local FirstTab = false
 	local Window = {}
