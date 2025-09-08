@@ -2013,6 +2013,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+			print("Second")
 			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
 			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 		end
@@ -2024,6 +2025,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+			print("First")
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
@@ -3477,6 +3479,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 				TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
 				TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+				print("E")
 				TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 				TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 			end
@@ -3996,35 +3999,6 @@ task.spawn(function()
 	end
 end)
 
-function changeglow(button)
-	for _, TabButton in ipairs(TabList:GetChildren()) do
-		if TabButton:IsA("Frame") or TabButton:IsA("TextButton") or TabButton:IsA("ImageButton") then
-			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-		end
-	end
 
-	local TabButton = button.Parent
-	TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
-	TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
-end
-
-task.spawn(function()
-repeat
-	task.wait()
-until _G.LoadedTabs
-for _, tab in ipairs(TabList:GetChildren()) do
-	if tab:IsA("Frame") or tab:IsA("TextButton") or tab:IsA("ImageButton") then
-		local interactBtn = tab:FindFirstChild("Interact")
-
-		if interactBtn and interactBtn:IsA("TextButton") or interactBtn:IsA("ImageButton") then
-			interactBtn.MouseButton1Click:Connect(function()
-				changeglow(interactBtn)
-				print("CLICK")
-			end)
-		end
-	end
-end
-end)
 
 return RayfieldLibrary
