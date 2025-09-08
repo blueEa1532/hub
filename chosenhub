@@ -755,7 +755,6 @@ local function ChangeTheme(Theme)
 	Rayfield.Main.Topbar.Search.ImageColor3 = SelectedTheme.TextColor
 	if Topbar:FindFirstChild('Settings') then
 		Rayfield.Main.Topbar.Settings.ImageColor3 = SelectedTheme.TextColor
-		Rayfield.Main.Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
 	end
 
 	Main.Search.BackgroundColor3 = SelectedTheme.TextColor
@@ -1245,7 +1244,6 @@ local function Maximise()
 Topbar.UIStroke.Transparency = 1
 Main.Shadow.Image.ImageTransparency = 0.6
 Topbar.CornerRepair.BackgroundTransparency = 0
-Topbar.Divider.BackgroundTransparency = 0
 dragBarCosmetic.BackgroundTransparency = 0.7
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 Topbar.Size = UDim2.new(0, 700, 0, 45)
@@ -1310,7 +1308,6 @@ Main.Topbar.Size = UDim2.new(0, 700, 0, 45)
 Main.Shadow.Image.ImageTransparency = 0.6
 Main.BackgroundTransparency = 0
 Main.Topbar.BackgroundTransparency = 0
-Main.Topbar.Divider.BackgroundTransparency = 0
 Main.Topbar.CornerRepair.BackgroundTransparency = 0
 Main.Topbar.Title.TextTransparency = 0
 
@@ -3506,8 +3503,6 @@ Main.Shadow.Image.ImageTransparency = 0.6
 
 
 	Topbar.BackgroundTransparency = 1
-	Topbar.Divider.Size = UDim2.new(0, 0, 0, 1)
-	Topbar.Divider.BackgroundColor3 = SelectedTheme.ElementStroke
 	Topbar.CornerRepair.BackgroundTransparency = 1
 	Topbar.Title.TextTransparency = 1
 	Topbar.Search.ImageTransparency = 1
