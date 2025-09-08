@@ -2007,13 +2007,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackgroundSelected
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+print("this one")
 			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
 		else
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-			print("Second")
 			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
 			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 		end
@@ -2025,7 +2025,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-			print("First")
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
@@ -2036,6 +2035,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+print("right here")
 			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
@@ -2051,6 +2051,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+print("nowherer")
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackgroundSelected}):Play()
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.SelectedTabTextColor}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageColor3 = SelectedTheme.SelectedTabTextColor}):Play()
@@ -2063,6 +2064,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
 					TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 					TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+					print("here")
 					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
 					TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
@@ -3474,12 +3476,12 @@ function RayfieldLibrary:CreateWindow(Settings)
 				TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 				TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 				TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+				print("Eerregererggre")
 				TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
 			else
 				TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 				TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
 				TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-				print("E")
 				TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 				TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
 			end
