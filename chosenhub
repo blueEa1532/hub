@@ -2018,8 +2018,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 		end
 
 
-		-- Animate
-		task.wait(0.1)
 		if FirstTab or Ext then
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
@@ -3997,5 +3995,32 @@ task.spawn(function()
 		thesuperuithingy.Rotation = thesuperuithingy.Rotation + 0.75
 	end
 end)
+
+function changeglow(button)
+	for _, TabButton in ipairs(TabList:GetChildren()) do
+		if TabButton:IsA("Frame") or TabButton:IsA("TextButton") or TabButton:IsA("ImageButton") then
+			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+		end
+	end
+
+	local TabButton = button.Parent
+	TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
+end
+
+for _, tab in ipairs(TabList:GetChildren()) do
+	if tab:IsA("Frame") or tab:IsA("TextButton") or tab:IsA("ImageButton") then
+		local interactBtn = tab:FindFirstChild("Interact")
+
+		if interactBtn and interactBtn:IsA("TextButton") or interactBtn:IsA("ImageButton") then
+			interactBtn.MouseButton1Click:Connect(function()
+				changeglow(interactBtn)
+				print("CLICK")
+			end)
+		end
+	end
+end
+
 
 return RayfieldLibrary
