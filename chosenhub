@@ -4009,6 +4009,10 @@ function changeglow(button)
 	TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
 end
 
+task.spawn(function()
+repeat
+	task.wait()
+until _G.LoadedTabs
 for _, tab in ipairs(TabList:GetChildren()) do
 	if tab:IsA("Frame") or tab:IsA("TextButton") or tab:IsA("ImageButton") then
 		local interactBtn = tab:FindFirstChild("Interact")
@@ -4021,6 +4025,6 @@ for _, tab in ipairs(TabList:GetChildren()) do
 		end
 	end
 end
-
+end)
 
 return RayfieldLibrary
