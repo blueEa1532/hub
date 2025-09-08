@@ -2042,8 +2042,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
-			TabButton.glow1.ImageTransparency = 0.6
-			TabButton.glow2.ImageTransparency = 0.85
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.TabBackgroundSelected}):Play()
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextColor3 = SelectedTheme.SelectedTabTextColor}):Play()
@@ -2057,8 +2055,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(OtherTabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
 					TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
 					TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
-			TabButton.glow1.ImageTransparency = 1
-			TabButton.glow2.ImageTransparency = 1
 					TweenService:Create(OtherTabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 					TweenService:Create(OtherTabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
 					TweenService:Create(OtherTabButton.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
@@ -2068,6 +2064,20 @@ function RayfieldLibrary:CreateWindow(Settings)
 			if Elements.UIPageLayout.CurrentPage ~= TabPage then
 				Elements.UIPageLayout:JumpTo(TabPage)
 			end
+		end)
+
+		TabButton.Interact.MouseButton1Click:Connect(function()
+			if Minimised then return end
+
+			for _, OtherTabButton in ipairs(TabList:GetChildren()) do
+				if OtherTabButton.Name ~= "Template" and OtherTabButton.ClassName == "Frame" and OtherTabButton ~= TabButton and OtherTabButton.Name ~= "Placeholder" then
+					TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+					TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 1}):Play()
+				end
+			end
+			print("YES")
+			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
 		end)
 
 		local Tab = {}
