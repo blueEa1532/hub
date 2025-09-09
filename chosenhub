@@ -2959,29 +2959,23 @@ print("right here")
 			end
 
 			function DropdownSettings:Refresh(optionsTable: table)
-				DropdownSettings.Options = optionsTable
-				
-				local children = Dropdown.List:GetChildren()
-				local index = 1
+			    DropdownSettings.Options = optionsTable
+			    for _, option in Dropdown.List:GetChildren() do
+			        if option.ClassName == "Frame" and option.Name ~= "Placeholder" then
+			            option:Destroy()
+			        end
+			    end
+			    SetDropdownOptions()
 			
-				-- Reuse existing frames
-				for _, option in ipairs(children) do
-					if option.ClassName == "Frame" and option.Name ~= "Placeholder" then
-						if optionsTable[index] then
-							option.TextLabel.Text = optionsTable[index]
-							option.Visible = true
-						else
-							option.Visible = false
-						end
-						index += 1
-					end
-				end
-			
-				-- Add new frames if there are more options than existing ones
-				for i = index, #optionsTable do
-					-- however you create a new option in SetDropdownOptions
-					CreateDropdownOption(optionsTable[i])
-				end
+			    if Dropdown.List.Visible then
+			        for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
+			            if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
+			                DropdownOpt.BackgroundTransparency = 0
+			                DropdownOpt.UIStroke.Transparency = 0
+			                DropdownOpt.Title.TextTransparency = 0
+			            end
+			        end
+			    end
 			end
 
 
