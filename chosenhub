@@ -2958,15 +2958,32 @@ print("right here")
 				--SaveConfiguration()
 			end
 
-			function DropdownSettings:Refresh(optionsTable: table) -- updates a dropdown with new options from optionsTable
+			function DropdownSettings:Refresh(optionsTable: table)
 				DropdownSettings.Options = optionsTable
-				for _, option in Dropdown.List:GetChildren() do
+				
+				local children = Dropdown.List:GetChildren()
+				local index = 1
+			
+				-- Reuse existing frames
+				for _, option in ipairs(children) do
 					if option.ClassName == "Frame" and option.Name ~= "Placeholder" then
-						option:Destroy()
+						if optionsTable[index] then
+							option.TextLabel.Text = optionsTable[index]
+							option.Visible = true
+						else
+							option.Visible = false
+						end
+						index += 1
 					end
 				end
-				SetDropdownOptions()
+			
+				-- Add new frames if there are more options than existing ones
+				for i = index, #optionsTable do
+					-- however you create a new option in SetDropdownOptions
+					CreateDropdownOption(optionsTable[i])
+				end
 			end
+
 
 			if Settings.ConfigurationSaving then
 				if Settings.ConfigurationSaving.Enabled and DropdownSettings.Flag then
