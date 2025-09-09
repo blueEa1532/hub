@@ -3128,6 +3128,10 @@ print("right here")
 			Toggle.Title.TextTransparency = 1
 			Toggle.Switch.BackgroundColor3 = SelectedTheme.ToggleBackground
 
+			if ToggleSettings.Powerful then
+				Toggle.Switch.glow.ImageColor3 = Color3.fromRGB(255, 0, 0)
+			end
+
 			if SelectedTheme ~= RayfieldLibrary.Theme.Default then
 				Toggle.Switch.Shadow.Visible = false
 			end
