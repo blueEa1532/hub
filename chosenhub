@@ -670,16 +670,16 @@ until buildAttempts >= 2
 Rayfield.Enabled = false
 
 task.spawn(function()
-while true do
-if not _G.coreguienabled then
-	Rayfield.Parent = playerguiet
-		else
-	Rayfield.Parent = game.CoreGui
-	end
-end
-task.wait()
-end
+    while true do
+        if not _G.coreguienabled then
+            Rayfield.Parent = playerguiet
+        else
+            Rayfield.Parent = game.CoreGui
+        end
+        task.wait()
+    end
 end)
+
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
