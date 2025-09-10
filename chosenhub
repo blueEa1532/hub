@@ -671,7 +671,12 @@ Rayfield.Enabled = false
 
 task.spawn(function()
 while true do
-Rayfield.Parent = playerguiet
+if not _G.coreguienabled then
+	Rayfield.Parent = playerguiet
+		else
+	Rayfield.Parent = game.CoreGui
+	end
+end
 task.wait()
 end
 end)
@@ -684,7 +689,7 @@ if gethui then
 		end
 	end
 elseif not useStudio then
-	for _, Interface in ipairs(playerguiet:GetChildren()) do
+	for _, Interface in ipairs(_G.coreguienabled and game.CoreGui:GetChildren() or playerguiet:GetChildren()) do
 		if Interface.Name == Rayfield.Name and Interface ~= Rayfield then
 			Interface.Enabled = false
 			Interface.Name = "Rayfield-Old"
@@ -1767,7 +1772,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					end
 				end
 			elseif not useStudio then
-				for _, Interface in ipairs(playerguiet:GetChildren()) do
+				for _, Interface in ipairs(_G.coreguienabled and game.CoreGui:GetChildren() or playerguiet:GetChildren()) do
 					if Interface.Name == KeyUI.Name and Interface ~= KeyUI then
 						Interface.Enabled = false
 						Interface.Name = "KeyUI-Old"
