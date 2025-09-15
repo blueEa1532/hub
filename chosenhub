@@ -3144,7 +3144,6 @@ print("right here")
 			end
 		end
 	end)
-end
 
 
 			function KeybindSettings:Set(NewKeybind)
