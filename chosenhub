@@ -248,7 +248,7 @@ end
 if debugX then
 	warn('Moving on to continue initialisation')
 end
-
+print("loading")
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
@@ -3060,7 +3060,14 @@ print("right here")
 							KeybindSettings.Callback(tostring(NewKeyNoEnum))
 						end
 					end
-				elseif not KeybindSettings.CallOnChange and KeybindSettings.CurrentKeybind ~= nil and (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed) then -- Test
+elseif not KeybindSettings.CallOnChange 
+    and KeybindSettings.CurrentKeybind ~= nil 
+    and (
+        (KeybindSettings.CurrentKeybind == "Touch" and input.UserInputType == Enum.UserInputType.Touch)
+        or (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed)
+    ) then
+
+
 					local Held = true
 					local Connection
 					Connection = input.Changed:Connect(function(prop)
