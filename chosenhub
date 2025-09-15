@@ -248,7 +248,7 @@ end
 if debugX then
 	warn('Moving on to continue initialisation')
 end
-print("loading")
+print("loading2")
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
@@ -2995,120 +2995,157 @@ print("right here")
 			return DropdownSettings
 		end
 
-		-- Keybind
 		function Tab:CreateKeybind(KeybindSettings)
-			local CheckingForKey = false
-			local Keybind = Elements.Template.Keybind:Clone()
-			Keybind.Name = KeybindSettings.Name
-			Keybind.Title.Text = KeybindSettings.Name
-			Keybind.Visible = true
-			Keybind.Parent = TabPage
+	local CheckingForKey = false
+	local Keybind = Elements.Template.Keybind:Clone()
+	Keybind.Name = KeybindSettings.Name
+	Keybind.Title.Text = KeybindSettings.Name
+	Keybind.Visible = true
+	Keybind.Parent = TabPage
 
-			Keybind.BackgroundTransparency = 1
-			Keybind.UIStroke.Transparency = 1
-			Keybind.Title.TextTransparency = 1
+	Keybind.BackgroundTransparency = 1
+	Keybind.UIStroke.Transparency = 1
+	Keybind.Title.TextTransparency = 1
 
-			Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
-			Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
+	Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
+	Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
 
-			TweenService:Create(Keybind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-			TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-			TweenService:Create(Keybind.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()	
+	TweenService:Create(Keybind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
+	TweenService:Create(Keybind.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
-			Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
-			Keybind.KeybindFrame.Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
+	Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
+	Keybind.KeybindFrame.Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
 
-			Keybind.KeybindFrame.KeybindBox.Focused:Connect(function()
-				CheckingForKey = true
-				Keybind.KeybindFrame.KeybindBox.Text = ""
-			end)
-			Keybind.KeybindFrame.KeybindBox.FocusLost:Connect(function()
+	-- Mobile check
+	local TouchEnabled = UserInputService.TouchEnabled
+
+	-- When user focuses (starts editing)
+	Keybind.KeybindFrame.KeybindBox.Focused:Connect(function()
+		CheckingForKey = true
+		Keybind.KeybindFrame.KeybindBox.Text = ""
+		Keybind.KeybindFrame.KeybindBox.ClearTextOnFocus = false
+	end)
+
+	-- When user stops editing
+	Keybind.KeybindFrame.KeybindBox.FocusLost:Connect(function(enterPressed)
+		if CheckingForKey then
+			CheckingForKey = false
+			local typed = Keybind.KeybindFrame.KeybindBox.Text
+			if typed and typed ~= "" then
+				local newKey = tostring(typed):upper():sub(1,1)
+				Keybind.KeybindFrame.KeybindBox.Text = newKey
+				KeybindSettings.CurrentKeybind = newKey
+				if not KeybindSettings.Ext then SaveConfiguration() end
+				if KeybindSettings.CallOnChange then
+					KeybindSettings.Callback(newKey)
+				end
+			else
+				Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
+				if not KeybindSettings.Ext then SaveConfiguration() end
+			end
+		end
+	end)
+
+	-- Hover effects
+	Keybind.MouseEnter:Connect(function()
+		TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
+	end)
+	Keybind.MouseLeave:Connect(function()
+		TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+	end)
+
+	-- Input capture (desktop + touch)
+	UserInputService.InputBegan:Connect(function(input, processed)
+		if CheckingForKey then
+			if input.UserInputType == Enum.UserInputType.Touch then
+				Keybind.KeybindFrame.KeybindBox.Text = "Touch"
+				KeybindSettings.CurrentKeybind = "Touch"
 				CheckingForKey = false
-				if Keybind.KeybindFrame.KeybindBox.Text == nil or Keybind.KeybindFrame.KeybindBox.Text == "" then
-					Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
-					if not KeybindSettings.Ext then
-						SaveConfiguration()
-					end
+				if not KeybindSettings.Ext then SaveConfiguration() end
+				if KeybindSettings.CallOnChange then
+					KeybindSettings.Callback("Touch")
+				end
+			elseif input.KeyCode ~= Enum.KeyCode.Unknown then
+				local SplitMessage = string.split(tostring(input.KeyCode), ".")
+				local NewKeyNoEnum = SplitMessage[3]
+				Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
+				KeybindSettings.CurrentKeybind = tostring(NewKeyNoEnum)
+				Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
+				CheckingForKey = false
+				if not KeybindSettings.Ext then SaveConfiguration() end
+				if KeybindSettings.CallOnChange then
+					KeybindSettings.Callback(tostring(NewKeyNoEnum))
+				end
+			end
+		elseif not KeybindSettings.CallOnChange 
+			and KeybindSettings.CurrentKeybind ~= nil 
+			and (
+				(KeybindSettings.CurrentKeybind == "Touch" and input.UserInputType == Enum.UserInputType.Touch)
+				or (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed)
+			) then
+
+			local Held = true
+			local Connection
+			Connection = input.Changed:Connect(function(prop)
+				if prop == "UserInputState" then
+					Connection:Disconnect()
+					Held = false
 				end
 			end)
 
-			Keybind.MouseEnter:Connect(function()
-				TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
-			end)
-
-			Keybind.MouseLeave:Connect(function()
-				TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
-			end)
-
-			UserInputService.InputBegan:Connect(function(input, processed)
-				if CheckingForKey then
-					if input.UserInputType == Enum.UserInputType.Touch then
-            Keybind.KeybindFrame.KeybindBox.Text = "Touch"
-            KeybindSettings.CurrentKeybind = "Touch"
-            CheckingForKey = false
-        elseif input.KeyCode ~= Enum.KeyCode.Unknown then
-						local SplitMessage = string.split(tostring(input.KeyCode), ".")
-						local NewKeyNoEnum = SplitMessage[3]
-						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
-						KeybindSettings.CurrentKeybind = tostring(NewKeyNoEnum)
-						Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
-						if not KeybindSettings.Ext then
-							SaveConfiguration()
-						end
-
-						if KeybindSettings.CallOnChange then
-							KeybindSettings.Callback(tostring(NewKeyNoEnum))
-						end
-					end
-elseif not KeybindSettings.CallOnChange 
-    and KeybindSettings.CurrentKeybind ~= nil 
-    and (
-        (KeybindSettings.CurrentKeybind == "Touch" and input.UserInputType == Enum.UserInputType.Touch)
-        or (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed)
-    ) then
-
-
-					local Held = true
-					local Connection
-					Connection = input.Changed:Connect(function(prop)
-						if prop == "UserInputState" then
-							Connection:Disconnect()
-							Held = false
+			if not KeybindSettings.HoldToInteract then
+				local Success, Response = pcall(KeybindSettings.Callback)
+				if not Success then
+					TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
+					TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+					Keybind.Title.Text = "Callback Error"
+					print("Rayfield | "..KeybindSettings.Name.." Callback Error " ..tostring(Response))
+					warn('Check docs.sirius.menu for help with Rayfield specific development.')
+					task.wait(0.5)
+					Keybind.Title.Text = KeybindSettings.Name
+					TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+					TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
+				end
+			else
+				task.wait(0.25)
+				if Held then
+					local Loop; Loop = RunService.Stepped:Connect(function()
+						if not Held then
+							KeybindSettings.Callback(false)
+							Loop:Disconnect()
+						else
+							KeybindSettings.Callback(true)
 						end
 					end)
-
-					if not KeybindSettings.HoldToInteract then
-						local Success, Response = pcall(KeybindSettings.Callback)
-						if not Success then
-							TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
-							TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-							Keybind.Title.Text = "Callback Error"
-							print("Rayfield | "..KeybindSettings.Name.." Callback Error " ..tostring(Response))
-							warn('Check docs.sirius.menu for help with Rayfield specific development.')
-							task.wait(0.5)
-							Keybind.Title.Text = KeybindSettings.Name
-							TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
-							TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-						end
-					else
-						task.wait(0.25)
-						if Held then
-							local Loop; Loop = RunService.Stepped:Connect(function()
-								if not Held then
-									KeybindSettings.Callback(false) -- maybe pcall this
-									Loop:Disconnect()
-								else
-									KeybindSettings.Callback(true) -- maybe pcall this
-								end
-							end)
-						end
-					end
 				end
-			end)
+			end
+		end
+	end)
 
-			Keybind.KeybindFrame.KeybindBox:GetPropertyChangedSignal("Text"):Connect(function()
-				TweenService:Create(Keybind.KeybindFrame, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)}):Play()
-			end)
+	-- Text change = resize + mobile instant capture
+	Keybind.KeybindFrame.KeybindBox:GetPropertyChangedSignal("Text"):Connect(function()
+		TweenService:Create(Keybind.KeybindFrame, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+			Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
+		}):Play()
+
+		if CheckingForKey and TouchEnabled then
+			local txt = Keybind.KeybindFrame.KeybindBox.Text
+			if txt and txt ~= "" then
+				local newKey = tostring(txt):upper():sub(1,1)
+				Keybind.KeybindFrame.KeybindBox.Text = newKey
+				KeybindSettings.CurrentKeybind = newKey
+				Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
+				CheckingForKey = false
+				if not KeybindSettings.Ext then SaveConfiguration() end
+				if KeybindSettings.CallOnChange then
+					KeybindSettings.Callback(newKey)
+				end
+			end
+		end
+	end)
+end
+
 
 			function KeybindSettings:Set(NewKeybind)
 				Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeybind)
