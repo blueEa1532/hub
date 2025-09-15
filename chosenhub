@@ -3042,7 +3042,11 @@ print("right here")
 
 			UserInputService.InputBegan:Connect(function(input, processed)
 				if CheckingForKey then
-					if input.KeyCode ~= Enum.KeyCode.Unknown then
+					if input.UserInputType == Enum.UserInputType.Touch then
+            Keybind.KeybindFrame.KeybindBox.Text = "Touch"
+            KeybindSettings.CurrentKeybind = "Touch"
+            CheckingForKey = false
+        elseif input.KeyCode ~= Enum.KeyCode.Unknown then
 						local SplitMessage = string.split(tostring(input.KeyCode), ".")
 						local NewKeyNoEnum = SplitMessage[3]
 						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
