@@ -4242,7 +4242,7 @@ function ejeaiof()
 	BlurredGui.new(Main, "Rectangle")
 	
 	BlurredGui.updateAll()
-end)
+end --fixed error
 
 task.spawn(ejeaiof)
 
