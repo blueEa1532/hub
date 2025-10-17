@@ -2436,6 +2436,11 @@ print("right here")
 			Divider.Parent = TabPage
 
 			Divider.Divider.BackgroundTransparency = 1
+			for _, objectscuysr in ipairs(Divider:GetChildren()) do
+				if objectscuysr.Name == "tab" then
+					objectscuysr:Destroy()
+				end
+			end
 			TweenService:Create(Divider.Divider, TweenInfo.new(0.5, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.85}):Play()
 
 			function DividerValue:Set(Value)
