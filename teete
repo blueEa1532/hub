@@ -248,7 +248,7 @@ end
 if debugX then
 	warn('Moving on to continue initialisation')
 end
-print("loading7")
+print("loading8")
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
@@ -670,14 +670,14 @@ until buildAttempts >= 2
 Rayfield.Enabled = false
 
 task.spawn(function()
-    while true do
-        if not _G.coreguienabled then
-            Rayfield.Parent = playerguiet
-        else
-            Rayfield.Parent = game.CoreGui
-        end
-        task.wait()
-    end
+	while true do
+		if not _G.coreguienabled then
+			Rayfield.Parent = playerguiet
+		else
+			Rayfield.Parent = game.CoreGui
+		end
+		task.wait()
+	end
 end)
 
 
@@ -1251,12 +1251,12 @@ local function Maximise()
 	Debounce = true
 	Topbar.ChangeSize.Image = "rbxassetid://"..10137941941
 
-Topbar.UIStroke.Transparency = 1
-Main.Shadow.Image.ImageTransparency = 0.7
-Topbar.CornerRepair.BackgroundTransparency = 0
-dragBarCosmetic.BackgroundTransparency = 0.7
-Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
-Topbar.Size = UDim2.new(0, 700, 0, 45)
+	Topbar.UIStroke.Transparency = 1
+	Main.Shadow.Image.ImageTransparency = 0.7
+	Topbar.CornerRepair.BackgroundTransparency = 0
+	dragBarCosmetic.BackgroundTransparency = 0.7
+	Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
+	Topbar.Size = UDim2.new(0, 700, 0, 45)
 
 	TabList.Visible = true
 
@@ -1319,13 +1319,13 @@ local function Unhide()
 	Debounce = true
 	Main.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Main.Visible = true
-Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
-Main.Topbar.Size = UDim2.new(0, 700, 0, 45)
-Main.Shadow.Image.ImageTransparency = 0.7
-Main.BackgroundTransparency = 0.9
-Main.Topbar.BackgroundTransparency = 0.9
-Main.Topbar.CornerRepair.BackgroundTransparency = 0.9
-Main.Topbar.Title.TextTransparency = 0
+	Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
+	Main.Topbar.Size = UDim2.new(0, 700, 0, 45)
+	Main.Shadow.Image.ImageTransparency = 0.7
+	Main.BackgroundTransparency = 0.9
+	Main.Topbar.BackgroundTransparency = 0.9
+	Main.Topbar.CornerRepair.BackgroundTransparency = 0.9
+	Main.Topbar.Title.TextTransparency = 0
 
 
 	if MPrompt then
@@ -1940,7 +1940,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Elements.UIPageLayout.FillDirection = Enum.FillDirection.Horizontal
 	TabList.Template.Visible = false
 	TabList.Size = UDim2.new(0.3, -25, 0.65, 36)
-	
+
 	Elements.Size = UDim2.new(0.7, 0, 1.011, -100)
 	task.spawn(function()
 		while task.wait() do
@@ -2018,7 +2018,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackgroundSelected
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
-print("this one")
+			print("this one")
 			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
 		else
@@ -2046,7 +2046,7 @@ print("this one")
 			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 			TweenService:Create(TabButton.glow1, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 			TweenService:Create(TabButton.glow2, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.85}):Play()
-print("right here")
+			print("right here")
 			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
@@ -2978,23 +2978,23 @@ print("right here")
 			end
 
 			function DropdownSettings:Refresh(optionsTable: table)
-			    DropdownSettings.Options = optionsTable
-			    for _, option in Dropdown.List:GetChildren() do
-			        if option.ClassName == "Frame" and option.Name ~= "Placeholder" then
-			            option:Destroy()
-			        end
-			    end
-			    SetDropdownOptions()
-			
-			    if Dropdown.List.Visible then
-			        for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
-			            if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
-			                DropdownOpt.BackgroundTransparency = 0.8
-			                DropdownOpt.UIStroke.Transparency = 0
-			                DropdownOpt.Title.TextTransparency = 0
-			            end
-			        end
-			    end
+				DropdownSettings.Options = optionsTable
+				for _, option in Dropdown.List:GetChildren() do
+					if option.ClassName == "Frame" and option.Name ~= "Placeholder" then
+						option:Destroy()
+					end
+				end
+				SetDropdownOptions()
+
+				if Dropdown.List.Visible then
+					for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
+						if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
+							DropdownOpt.BackgroundTransparency = 0.8
+							DropdownOpt.UIStroke.Transparency = 0
+							DropdownOpt.Title.TextTransparency = 0
+						end
+					end
+				end
 			end
 
 
@@ -3013,154 +3013,154 @@ print("right here")
 		end
 
 		function Tab:CreateKeybind(KeybindSettings)
-	local CheckingForKey = false
-	local Keybind = Elements.Template.Keybind:Clone()
-	Keybind.Name = KeybindSettings.Name
-	Keybind.Title.Text = KeybindSettings.Name
-	Keybind.Visible = true
-	Keybind.Parent = TabPage
+			local CheckingForKey = false
+			local Keybind = Elements.Template.Keybind:Clone()
+			Keybind.Name = KeybindSettings.Name
+			Keybind.Title.Text = KeybindSettings.Name
+			Keybind.Visible = true
+			Keybind.Parent = TabPage
 
-	Keybind.BackgroundTransparency = 1
-	Keybind.UIStroke.Transparency = 1
-	Keybind.Title.TextTransparency = 1
+			Keybind.BackgroundTransparency = 1
+			Keybind.UIStroke.Transparency = 1
+			Keybind.Title.TextTransparency = 1
 
-	Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
-	Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
+			Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
+			Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
 
-	TweenService:Create(Keybind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.8}):Play()
-	TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-	TweenService:Create(Keybind.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
+			TweenService:Create(Keybind, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.8}):Play()
+			TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
+			TweenService:Create(Keybind.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
-	Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
-	Keybind.KeybindFrame.Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
+			Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
+			Keybind.KeybindFrame.Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
 
-	-- Mobile check
-	local TouchEnabled = UserInputService.TouchEnabled
+			-- Mobile check
+			local TouchEnabled = UserInputService.TouchEnabled
 
-	-- When user focuses (starts editing)
-	Keybind.KeybindFrame.KeybindBox.Focused:Connect(function()
-		CheckingForKey = true
-		Keybind.KeybindFrame.KeybindBox.Text = ""
-		Keybind.KeybindFrame.KeybindBox.ClearTextOnFocus = false
-	end)
+			-- When user focuses (starts editing)
+			Keybind.KeybindFrame.KeybindBox.Focused:Connect(function()
+				CheckingForKey = true
+				Keybind.KeybindFrame.KeybindBox.Text = ""
+				Keybind.KeybindFrame.KeybindBox.ClearTextOnFocus = false
+			end)
 
-	-- When user stops editing
-	Keybind.KeybindFrame.KeybindBox.FocusLost:Connect(function(enterPressed)
-		if CheckingForKey then
-			CheckingForKey = false
-			local typed = Keybind.KeybindFrame.KeybindBox.Text
-			if typed and typed ~= "" then
-				local newKey = tostring(typed):upper():sub(1,1)
-				Keybind.KeybindFrame.KeybindBox.Text = newKey
-				KeybindSettings.CurrentKeybind = newKey
-				if not KeybindSettings.Ext then SaveConfiguration() end
-				if KeybindSettings.CallOnChange then
-					KeybindSettings.Callback(newKey)
-				end
-			else
-				Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
-				if not KeybindSettings.Ext then SaveConfiguration() end
-			end
-		end
-	end)
-
-	-- Hover effects
-	Keybind.MouseEnter:Connect(function()
-		TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
-	end)
-	Keybind.MouseLeave:Connect(function()
-		TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
-	end)
-
-	-- Input capture (desktop + touch)
-	UserInputService.InputBegan:Connect(function(input, processed)
-		if CheckingForKey then
-			if input.UserInputType == Enum.UserInputType.Touch then
-				Keybind.KeybindFrame.KeybindBox.Text = "Touch"
-				KeybindSettings.CurrentKeybind = "Touch"
-				CheckingForKey = false
-				if not KeybindSettings.Ext then SaveConfiguration() end
-				if KeybindSettings.CallOnChange then
-					KeybindSettings.Callback("Touch")
-				end
-			elseif input.KeyCode ~= Enum.KeyCode.Unknown then
-				local SplitMessage = string.split(tostring(input.KeyCode), ".")
-				local NewKeyNoEnum = SplitMessage[3]
-				Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
-				KeybindSettings.CurrentKeybind = tostring(NewKeyNoEnum)
-				Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
-				CheckingForKey = false
-				if not KeybindSettings.Ext then SaveConfiguration() end
-				if KeybindSettings.CallOnChange then
-					KeybindSettings.Callback(tostring(NewKeyNoEnum))
-				end
-			end
-		elseif not KeybindSettings.CallOnChange 
-			and KeybindSettings.CurrentKeybind ~= nil 
-			and (
-				(KeybindSettings.CurrentKeybind == "Touch" and input.UserInputType == Enum.UserInputType.Touch)
-				or (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed)
-			) then
-
-			local Held = true
-			local Connection
-			Connection = input.Changed:Connect(function(prop)
-				if prop == "UserInputState" then
-					Connection:Disconnect()
-					Held = false
+			-- When user stops editing
+			Keybind.KeybindFrame.KeybindBox.FocusLost:Connect(function(enterPressed)
+				if CheckingForKey then
+					CheckingForKey = false
+					local typed = Keybind.KeybindFrame.KeybindBox.Text
+					if typed and typed ~= "" then
+						local newKey = tostring(typed):upper():sub(1,1)
+						Keybind.KeybindFrame.KeybindBox.Text = newKey
+						KeybindSettings.CurrentKeybind = newKey
+						if not KeybindSettings.Ext then SaveConfiguration() end
+						if KeybindSettings.CallOnChange then
+							KeybindSettings.Callback(newKey)
+						end
+					else
+						Keybind.KeybindFrame.KeybindBox.Text = KeybindSettings.CurrentKeybind
+						if not KeybindSettings.Ext then SaveConfiguration() end
+					end
 				end
 			end)
 
-			if not KeybindSettings.HoldToInteract then
-				local Success, Response = pcall(KeybindSettings.Callback)
-				if not Success then
-					TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
-					TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					Keybind.Title.Text = "Callback Error"
-					print("Rayfield | "..KeybindSettings.Name.." Callback Error " ..tostring(Response))
-					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0.5)
-					Keybind.Title.Text = KeybindSettings.Name
-					TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
-					TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
-				end
-			else
-				task.wait(0.25)
-				if Held then
-					local Loop; Loop = RunService.Stepped:Connect(function()
-						if not Held then
-							KeybindSettings.Callback(false)
-							Loop:Disconnect()
-						else
-							KeybindSettings.Callback(true)
+			-- Hover effects
+			Keybind.MouseEnter:Connect(function()
+				TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
+			end)
+			Keybind.MouseLeave:Connect(function()
+				TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+			end)
+
+			-- Input capture (desktop + touch)
+			UserInputService.InputBegan:Connect(function(input, processed)
+				if CheckingForKey then
+					if input.UserInputType == Enum.UserInputType.Touch then
+						Keybind.KeybindFrame.KeybindBox.Text = "Touch"
+						KeybindSettings.CurrentKeybind = "Touch"
+						CheckingForKey = false
+						if not KeybindSettings.Ext then SaveConfiguration() end
+						if KeybindSettings.CallOnChange then
+							KeybindSettings.Callback("Touch")
+						end
+					elseif input.KeyCode ~= Enum.KeyCode.Unknown then
+						local SplitMessage = string.split(tostring(input.KeyCode), ".")
+						local NewKeyNoEnum = SplitMessage[3]
+						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
+						KeybindSettings.CurrentKeybind = tostring(NewKeyNoEnum)
+						Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
+						CheckingForKey = false
+						if not KeybindSettings.Ext then SaveConfiguration() end
+						if KeybindSettings.CallOnChange then
+							KeybindSettings.Callback(tostring(NewKeyNoEnum))
+						end
+					end
+				elseif not KeybindSettings.CallOnChange 
+					and KeybindSettings.CurrentKeybind ~= nil 
+					and (
+						(KeybindSettings.CurrentKeybind == "Touch" and input.UserInputType == Enum.UserInputType.Touch)
+							or (input.KeyCode == Enum.KeyCode[KeybindSettings.CurrentKeybind] and not processed)
+					) then
+
+					local Held = true
+					local Connection
+					Connection = input.Changed:Connect(function(prop)
+						if prop == "UserInputState" then
+							Connection:Disconnect()
+							Held = false
 						end
 					end)
-				end
-			end
-		end
-	end)
 
-	-- Text change = resize + mobile instant capture
-	Keybind.KeybindFrame.KeybindBox:GetPropertyChangedSignal("Text"):Connect(function()
-		TweenService:Create(Keybind.KeybindFrame, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
-		}):Play()
-
-		if CheckingForKey and TouchEnabled then
-			local txt = Keybind.KeybindFrame.KeybindBox.Text
-			if txt and txt ~= "" then
-				local newKey = tostring(txt):upper():sub(1,1)
-				Keybind.KeybindFrame.KeybindBox.Text = newKey
-				KeybindSettings.CurrentKeybind = newKey
-				Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
-				CheckingForKey = false
-				if not KeybindSettings.Ext then SaveConfiguration() end
-				if KeybindSettings.CallOnChange then
-					KeybindSettings.Callback(newKey)
+					if not KeybindSettings.HoldToInteract then
+						local Success, Response = pcall(KeybindSettings.Callback)
+						if not Success then
+							TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
+							TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+							Keybind.Title.Text = "Callback Error"
+							print("Rayfield | "..KeybindSettings.Name.." Callback Error " ..tostring(Response))
+							warn('Check docs.sirius.menu for help with Rayfield specific development.')
+							task.wait(0.5)
+							Keybind.Title.Text = KeybindSettings.Name
+							TweenService:Create(Keybind, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
+							TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
+						end
+					else
+						task.wait(0.25)
+						if Held then
+							local Loop; Loop = RunService.Stepped:Connect(function()
+								if not Held then
+									KeybindSettings.Callback(false)
+									Loop:Disconnect()
+								else
+									KeybindSettings.Callback(true)
+								end
+							end)
+						end
+					end
 				end
-			end
-		end
-	end)
+			end)
+
+			-- Text change = resize + mobile instant capture
+			Keybind.KeybindFrame.KeybindBox:GetPropertyChangedSignal("Text"):Connect(function()
+				TweenService:Create(Keybind.KeybindFrame, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {
+					Size = UDim2.new(0, Keybind.KeybindFrame.KeybindBox.TextBounds.X + 24, 0, 30)
+				}):Play()
+
+				if CheckingForKey and TouchEnabled then
+					local txt = Keybind.KeybindFrame.KeybindBox.Text
+					if txt and txt ~= "" then
+						local newKey = tostring(txt):upper():sub(1,1)
+						Keybind.KeybindFrame.KeybindBox.Text = newKey
+						KeybindSettings.CurrentKeybind = newKey
+						Keybind.KeybindFrame.KeybindBox:ReleaseFocus()
+						CheckingForKey = false
+						if not KeybindSettings.Ext then SaveConfiguration() end
+						if KeybindSettings.CallOnChange then
+							KeybindSettings.Callback(newKey)
+						end
+					end
+				end
+			end)
 
 
 			function KeybindSettings:Set(NewKeybind)
@@ -3243,8 +3243,8 @@ print("right here")
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -40, 0.5, 0)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 0, -2.563, 0)}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 0, -2.563, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledStroke}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleDisabled}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledOuterStroke}):Play()
@@ -3255,8 +3255,8 @@ print("right here")
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -20, 0.5, 0)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 20, -2.563, 0)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 20, -2.563, 0)}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleEnabledStroke}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleEnabled}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleEnabledOuterStroke}):Play()
@@ -3294,8 +3294,8 @@ print("right here")
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -20, 0.5, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,12,0,12)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 20, -2.563, 0)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 20, -2.563, 0)}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0.2}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleEnabledStroke}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleEnabled}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleEnabledOuterStroke}):Play()
@@ -3308,8 +3308,8 @@ print("right here")
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -40, 0.5, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,12,0,12)}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
-          TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 0, -2.563, 0)}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 1}):Play()
+					TweenService:Create(Toggle.Switch.glow, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-1.257, 0, -2.563, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledStroke}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleDisabled}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledOuterStroke}):Play()
@@ -3571,16 +3571,16 @@ print("right here")
 
 
 
-Main.Size = UDim2.new(0, 390, 0, 90)
+	Main.Size = UDim2.new(0, 390, 0, 90)
 
-LoadingFrame.Title.TextTransparency = 1
-LoadingFrame.Subtitle.TextTransparency = 1
-LoadingFrame.Subtitle.Visible = false
-LoadingFrame.Version.TextTransparency = 1
+	LoadingFrame.Title.TextTransparency = 1
+	LoadingFrame.Subtitle.TextTransparency = 1
+	LoadingFrame.Subtitle.Visible = false
+	LoadingFrame.Version.TextTransparency = 1
 
-Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
+	Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 
-Main.Shadow.Image.ImageTransparency = 0.7
+	Main.Shadow.Image.ImageTransparency = 0.7
 
 
 	Topbar.BackgroundTransparency = 1
@@ -4080,43 +4080,43 @@ end)
 function ejeaiof()
 	local Lighting          = game:GetService("Lighting")
 	local camera			= workspace.CurrentCamera
-	
+
 	local frame123 = Main.Size
-	
+
 	local BLUR_SIZE         = Vector2.new(frame123.X.Offset, frame123.Y.Offset)
 	local PART_SIZE         = 0.01
 	local PART_TRANSPARENCY = 1 - 1e-7
 	local START_INTENSITY	= 0.25
-	
+
 	Main:SetAttribute("BlurIntensity", START_INTENSITY)
-	
+
 	local BLUR_OBJ          = Instance.new("DepthOfFieldEffect")
 	BLUR_OBJ.FarIntensity   = 0
 	BLUR_OBJ.NearIntensity  = Main:GetAttribute("BlurIntensity")
 	BLUR_OBJ.FocusDistance  = 0.25
 	BLUR_OBJ.InFocusRadius  = 0
 	BLUR_OBJ.Parent         = Lighting
-	
+
 	local PartsList         = {}
 	local BlursList         = {}
 	local BlurObjects       = {}
 	local BlurredGui        = {}
-	
+
 	BlurredGui.__index      = BlurredGui
-	
-	function rayPlaneIntersect(planePos, planeNormal, rayOrigin, rayDirection)
+
+	local function rayPlaneIntersect(planePos, planeNormal, rayOrigin, rayDirection)
 		local n = planeNormal
 		local d = rayDirection
 		local v = rayOrigin - planePos
-	
+
 		local num = n.x*v.x + n.y*v.y + n.z*v.z
 		local den = n.x*d.x + n.y*d.y + n.z*d.z
 		local a = -num / den
-	
+
 		return rayOrigin + a * rayDirection, a
 	end
-	
-	function rebuildPartsList()
+
+	local function rebuildPartsList()
 		PartsList = {}
 		BlursList = {}
 		for blurObj, part in pairs(BlurObjects) do
@@ -4124,7 +4124,7 @@ function ejeaiof()
 			table.insert(BlursList, blurObj)
 		end
 	end
-	
+
 	function BlurredGui.new(frame, shape)
 		local blurPart        = Instance.new("Part")
 		blurPart.Size         = Vector3.new(1, 1, 1) * 0.01
@@ -4134,7 +4134,7 @@ function ejeaiof()
 		blurPart.Material     = Enum.Material.Glass
 		blurPart.Transparency = PART_TRANSPARENCY
 		blurPart.Parent       = workspace.CurrentCamera
-	
+
 		local mesh
 		if (shape == "Rectangle") then
 			mesh        = Instance.new("BlockMesh")
@@ -4144,13 +4144,13 @@ function ejeaiof()
 			mesh.MeshType = Enum.MeshType.Sphere
 			mesh.Parent   = blurPart
 		end
-		
+
 		local ignoreInset = false
 		local currentObj  = frame
-		
+
 		while true do
 			currentObj = currentObj.Parent
-	
+
 			if (currentObj and currentObj:IsA("ScreenGui")) then
 				ignoreInset = currentObj.IgnoreGuiInset
 				break
@@ -4158,44 +4158,44 @@ function ejeaiof()
 				break
 			end
 		end
-	
+
 		local new = setmetatable({
 			Frame          = frame;
 			Part           = blurPart;
 			Mesh           = mesh;
 			IgnoreGuiInset = ignoreInset;
 		}, BlurredGui)
-	
+
 		BlurObjects[new] = blurPart
 		rebuildPartsList()
-	
+
 		game:GetService("RunService"):BindToRenderStep("...", Enum.RenderPriority.Camera.Value + 1, function()
 			blurPart.CFrame = camera.CFrame * CFrame.new(0,0,0)
 			BlurredGui.updateAll()
 		end)
 		return new
 	end
-	
-	function updateGui(blurObj)
+
+	local function updateGui(blurObj)
 		if (not blurObj.Frame.Visible) then
 			blurObj.Part.Transparency = 1
 			return
 		end
-		
+
 		local camera = workspace.CurrentCamera
 		local frame  = blurObj.Frame
 		local part   = blurObj.Part
 		local mesh   = blurObj.Mesh
-		
+
 		part.Transparency = PART_TRANSPARENCY
-		
+
 		local BLUR_Y_SHIFT = 60
-	
+
 		local shift = Vector2.new(0, BLUR_Y_SHIFT)
-	
+
 		local corner0 = frame.AbsolutePosition + BLUR_SIZE + shift
 		local corner1 = corner0 + frame.AbsoluteSize - BLUR_SIZE*2
-	
+
 		local ray0, ray1
 		if (blurObj.IgnoreGuiInset) then
 			ray0 = camera:ViewportPointToRay(corner0.X, corner0.Y, 1)
@@ -4204,44 +4204,45 @@ function ejeaiof()
 			ray0 = camera:ScreenPointToRay(corner0.X, corner0.Y, 1)
 			ray1 = camera:ScreenPointToRay(corner1.X, corner1.Y, 1)
 		end
-	
+
 		local planeOrigin = camera.CFrame.Position + camera.CFrame.LookVector * (0.05 - camera.NearPlaneZ)
 		local planeNormal = camera.CFrame.LookVector
 		local pos0 = rayPlaneIntersect(planeOrigin, planeNormal, ray0.Origin, ray0.Direction)
 		local pos1 = rayPlaneIntersect(planeOrigin, planeNormal, ray1.Origin, ray1.Direction)
-	
+
 		local pos0 = camera.CFrame:PointToObjectSpace(pos0)
 		local pos1 = camera.CFrame:PointToObjectSpace(pos1)
-	
+
 		local size   = pos1 - pos0
 		local center = (pos0 + pos1)/2
-	
+
 		mesh.Offset = center
 		mesh.Scale  = size / PART_SIZE
 	end
-	
+
 	function BlurredGui.updateAll()
 		BLUR_OBJ.NearIntensity = tonumber(Main:GetAttribute("BlurIntensity"))
-		
+
 		for i = 1, #BlursList do
 			updateGui(BlursList[i])
 		end
-	
+
 		local cframes = table.create(#BlursList, workspace.CurrentCamera.CFrame)
 		workspace:BulkMoveTo(PartsList, cframes, Enum.BulkMoveMode.FireCFrameChanged)
-	
+
 		BLUR_OBJ.FocusDistance = 0.25 - camera.NearPlaneZ
 	end
-	
+
 	function BlurredGui:Destroy()
 		self.Part:Destroy()
 		BlurObjects[self] = nil
 		rebuildPartsList()
 	end
-	
+
 	BlurredGui.new(Main, "Rectangle")
-	
+
 	BlurredGui.updateAll()
+	return BlurredGui
 end --fixed error
 
 task.spawn(ejeaiof)
