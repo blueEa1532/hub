@@ -1263,7 +1263,7 @@ Topbar.Size = UDim2.new(0, 700, 0, 45)
 	Elements.Visible = true
 
 	for _, objectscys in ipairs(Elements:GetChildren()) do
-		if objectscys.BackgroundTransparency == 0 then
+		if objectscys:IsA("Frame") and objectscys.BackgroundTransparency == 0 then
 			objectscys.BackgroundTransparency = 0.8
 		end
 	end
