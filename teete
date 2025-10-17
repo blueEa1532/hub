@@ -248,7 +248,7 @@ end
 if debugX then
 	warn('Moving on to continue initialisation')
 end
-print("loading4")
+print("loading5")
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
@@ -1148,7 +1148,7 @@ local function closeSearch()
 				TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			else
-				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
+				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
 				TweenService:Create(tabbtn.Image, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
@@ -1252,7 +1252,7 @@ local function Maximise()
 	Topbar.ChangeSize.Image = "rbxassetid://"..10137941941
 
 Topbar.UIStroke.Transparency = 1
-Main.Shadow.Image.ImageTransparency = 0.6
+Main.Shadow.Image.ImageTransparency = 0.7
 Topbar.CornerRepair.BackgroundTransparency = 0
 dragBarCosmetic.BackgroundTransparency = 0.7
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
@@ -1302,7 +1302,7 @@ Topbar.Size = UDim2.new(0, 700, 0, 45)
 				TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			else
-				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
+				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
 				TweenService:Create(tabbtn.Image, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
@@ -1321,7 +1321,7 @@ local function Unhide()
 	Main.Visible = true
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 Main.Topbar.Size = UDim2.new(0, 700, 0, 45)
-Main.Shadow.Image.ImageTransparency = 0.6
+Main.Shadow.Image.ImageTransparency = 0.7
 Main.BackgroundTransparency = 0.9
 Main.Topbar.BackgroundTransparency = 0.9
 Main.Topbar.CornerRepair.BackgroundTransparency = 0.9
@@ -1365,7 +1365,7 @@ Main.Topbar.Title.TextTransparency = 0
 				TweenService:Create(tabbtn.Image, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
 			else
-				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
+				TweenService:Create(tabbtn, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
 				TweenService:Create(tabbtn.Image, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {ImageTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.Title, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {TextTransparency = 0.2}):Play()
 				TweenService:Create(tabbtn.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 0.5}):Play()
@@ -1927,8 +1927,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Notifications.Visible = true
 	Rayfield.Enabled = true
 
-	TweenService:Create(Main, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.9}):Play()
-	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
+	TweenService:Create(Main, TweenInfo.new(0.9, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.9}):Play()
+	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {ImageTransparency = 0.7}):Play()
 	TweenService:Create(LoadingFrame.Title, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0.7, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
@@ -3580,7 +3580,7 @@ LoadingFrame.Version.TextTransparency = 1
 
 Main.Size = useMobileSizing and UDim2.new(0, 700, 0, 247) or UDim2.new(0, 700, 0, 447)
 
-Main.Shadow.Image.ImageTransparency = 0.6
+Main.Shadow.Image.ImageTransparency = 0.7
 
 
 	Topbar.BackgroundTransparency = 1
