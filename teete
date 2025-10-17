@@ -1241,6 +1241,11 @@ local function Hide(notify: boolean?)
 	Main.Visible = false
 	Debounce = false
 end
+for _, objectscys in ipairs(Elements:GetChildren()) do
+	if objectscys.BackgroundTransparency == 0 then
+		objectscys.BackgroundTransparency = 0.8
+	end
+end
 
 local function Maximise()
 	Debounce = true
@@ -1256,6 +1261,12 @@ Topbar.Size = UDim2.new(0, 700, 0, 45)
 	TabList.Visible = true
 
 	Elements.Visible = true
+
+	for _, objectscys in ipairs(Elements:GetChildren()) do
+		if objectscys.BackgroundTransparency == 0 then
+			objectscys.BackgroundTransparency = 0.8
+		end
+	end
 
 	for _, tab in ipairs(Elements:GetChildren()) do
 		if tab.Name ~= "Template" and tab.ClassName == "ScrollingFrame" and tab.Name ~= "Placeholder" then
