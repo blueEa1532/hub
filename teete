@@ -248,7 +248,7 @@ end
 if debugX then
 	warn('Moving on to continue initialisation')
 end
-print("loading8")
+print("loading9")
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
@@ -1169,6 +1169,8 @@ local function Hide(notify: boolean?)
 		MPrompt.Title.TextTransparency = 1
 		MPrompt.Visible = true
 	end
+
+	TweenService:Create(dragBarCosmetic, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
 
 	Debounce = true
 	if notify then
