@@ -2990,6 +2990,16 @@ function RayfieldLibrary:CreateWindow(Settings)
 				TweenService:Create(Dropdown, TweenInfo.new(0.4, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.DropdownSelected}):Play()
 			end)
 
+			for _, droption in ipairs(Dropdown.List:GetChildren()) do
+				if droption.ClassName == "Frame" and droption.Name ~= "Placeholder" then
+					if not table.find(DropdownSettings.CurrentOption, droption.Name) then
+						droption.BackgroundColor3 = SelectedTheme.DropdownUnselected
+					else
+						droption.BackgroundColor3 = SelectedTheme.DropdownSelected
+					end
+				end
+			end
+
 			return DropdownSettings
 		end
 
