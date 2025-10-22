@@ -2849,23 +2849,41 @@ function RayfieldLibrary:CreateWindow(Settings)
 							if not DropdownSettings.MultipleOptions and table.find(DropdownSettings.CurrentOption, Option) then
 								return
 							end
-		
-							if table.find(DropdownSettings.CurrentOption, Option) then
-								-- deselect
-								table.remove(DropdownSettings.CurrentOption, table.find(DropdownSettings.CurrentOption, Option))
-								UpdateSelectedLabel()
-							else
-								-- select
-								if not DropdownSettings.MultipleOptions then
-									table.clear(DropdownSettings.CurrentOption)
+						if table.find(DropdownSettings.CurrentOption, Option) then
+							table.remove(DropdownSettings.CurrentOption, table.find(DropdownSettings.CurrentOption, Option))
+							UpdateSelectedLabel()
+							if DropdownSettings.MultipleOptions then
+								if #DropdownSettings.CurrentOption == 1 then
+									Dropdown.Selected.Text = DropdownSettings.CurrentOption[1]
+								elseif #DropdownSettings.CurrentOption == 0 then
+									Dropdown.Selected.Text = "None"
+								else
+									Dropdown.Selected.Text = "Various"
 								end
-								table.insert(DropdownSettings.CurrentOption, Option)
-								UpdateSelectedLabel()
-		
-								TweenService:Create(DropdownOption.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-								TweenService:Create(DropdownOption, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.DropdownSelected}):Play()
-								Debounce = true
+							else
+								Dropdown.Selected.Text = DropdownSettings.CurrentOption[1]
 							end
+						else
+							UpdateSelectedLabel()
+							if not DropdownSettings.MultipleOptions then
+								table.clear(DropdownSettings.CurrentOption)
+							end
+							table.insert(DropdownSettings.CurrentOption, Option)
+							if DropdownSettings.MultipleOptions then
+								if #DropdownSettings.CurrentOption == 1 then
+									Dropdown.Selected.Text = DropdownSettings.CurrentOption[1]
+								elseif #DropdownSettings.CurrentOption == 0 then
+									Dropdown.Selected.Text = "None"
+								else
+									Dropdown.Selected.Text = "Various"
+								end
+							else
+								Dropdown.Selected.Text = DropdownSettings.CurrentOption[1]
+							end
+							TweenService:Create(DropdownOption.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
+							TweenService:Create(DropdownOption, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.DropdownSelected}):Play()
+							Debounce = true
+						end
 		
 							-- repaint everyone to reflect selection
 							ApplyAllOptionColors()
